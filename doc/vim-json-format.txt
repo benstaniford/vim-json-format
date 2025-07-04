@@ -1,0 +1,143 @@
+*vim-json-format.txt*    JSON formatting and folding plugin for Vim
+
+                            VIM-JSON-FORMAT
+                    JSON formatting and folding plugin
+                            Version 1.0
+
+==============================================================================
+CONTENTS                                            *vim-json-format-contents*
+
+1. Introduction .......................... |vim-json-format-introduction|
+2. Installation .......................... |vim-json-format-installation|
+3. Usage ................................. |vim-json-format-usage|
+4. Commands .............................. |vim-json-format-commands|
+5. Configuration ......................... |vim-json-format-configuration|
+6. Mappings .............................. |vim-json-format-mappings|
+7. Functions ............................. |vim-json-format-functions|
+8. Changelog ............................. |vim-json-format-changelog|
+
+==============================================================================
+1. INTRODUCTION                                 *vim-json-format-introduction*
+
+vim-json-format is a Vim plugin that automatically formats JSON files and 
+applies intelligent folding when you open or save them. It uses Python3's 
+built-in JSON module to ensure proper formatting and validation.
+
+Features:
+- Automatic JSON formatting on file open and save
+- Intelligent folding for JSON structures
+- Configurable indentation
+- JSON validation
+- Manual formatting commands
+- Toggle functionality
+
+Requirements:
+- Vim with Python3 support (has('python3') must be true)
+
+==============================================================================
+2. INSTALLATION                                 *vim-json-format-installation*
+
+Using vim-plug: >
+    Plug 'yourusername/vim-json-format'
+
+Using Vundle: >
+    Plugin 'yourusername/vim-json-format'
+
+Using Pathogen: >
+    cd ~/.vim/bundle
+    git clone https://github.com/yourusername/vim-json-format.git
+
+Manual installation:
+Copy the plugin files to your Vim configuration directory:
+- plugin/json-format.vim
+- autoload/json_format.vim
+- syntax/json.vim
+- ftplugin/json.vim
+
+==============================================================================
+3. USAGE                                               *vim-json-format-usage*
+
+The plugin works automatically on JSON files. When you open a JSON file, it 
+will be formatted and folded according to your settings.
+
+Basic workflow:
+1. Open a JSON file
+2. The file is automatically formatted and folded
+3. When you save, the formatting is applied again
+4. Use manual commands for on-demand formatting
+
+==============================================================================
+4. COMMANDS                                         *vim-json-format-commands*
+
+:JsonFormat                                                      *:JsonFormat*
+    Manually format the current buffer as JSON. Works on any buffer, but 
+    will show a warning if the file is not a JSON file.
+
+:JsonFormatToggle                                          *:JsonFormatToggle*
+    Toggle automatic JSON formatting on/off for the current session.
+
+==============================================================================
+5. CONFIGURATION                                *vim-json-format-configuration*
+
+g:json_format_on_open                                  *g:json_format_on_open*
+    Enable automatic formatting when opening JSON files.
+    Default: 1 (enabled)
+    Example: >
+        let g:json_format_on_open = 0
+
+g:json_format_on_save                                  *g:json_format_on_save*
+    Enable automatic formatting when saving JSON files.
+    Default: 1 (enabled)
+    Example: >
+        let g:json_format_on_save = 0
+
+g:json_format_indent                                    *g:json_format_indent*
+    Number of spaces to use for indentation.
+    Default: 2
+    Example: >
+        let g:json_format_indent = 4
+
+g:json_format_folds                                      *g:json_format_folds*
+    Enable automatic folding of JSON structures.
+    Default: 1 (enabled)
+    Example: >
+        let g:json_format_folds = 0
+
+==============================================================================
+6. MAPPINGS                                         *vim-json-format-mappings*
+
+The plugin provides these buffer-local mappings for JSON files:
+
+<leader>jf                                                         *<leader>jf*
+    Format the current JSON buffer (same as :JsonFormat)
+
+<leader>jt                                                         *<leader>jt*
+    Toggle automatic formatting (same as :JsonFormatToggle)
+
+==============================================================================
+7. FUNCTIONS                                        *vim-json-format-functions*
+
+json_format#format_buffer()                      *json_format#format_buffer()*
+    Format the current buffer as JSON. This is the main formatting function.
+
+json_format#apply_folds()                          *json_format#apply_folds()*
+    Apply folding to the current JSON buffer.
+
+json_format#toggle_format()                      *json_format#toggle_format()*
+    Toggle automatic formatting on/off.
+
+json_format#is_valid_json()                      *json_format#is_valid_json()*
+    Check if the current buffer contains valid JSON.
+    Returns 1 if valid, 0 if invalid.
+
+==============================================================================
+8. CHANGELOG                                        *vim-json-format-changelog*
+
+1.0     Initial release
+        - Automatic JSON formatting on open/save
+        - Intelligent folding
+        - Configurable options
+        - Manual commands
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
