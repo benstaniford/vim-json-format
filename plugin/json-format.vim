@@ -9,9 +9,9 @@ let g:loaded_json_format = 1
 
 " Check if Python3 is available
 if !has('python3')
-    echohl ErrorMsg
-    echom 'vim-json-format requires Python3 support'
-    echohl None
+    " echohl ErrorMsg
+    " echom 'vim-json-format requires Python3 support'
+    " echohl None
     finish
 endif
 
