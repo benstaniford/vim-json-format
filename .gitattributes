@@ -1,0 +1,6 @@
+# Declare vim files will always have LF line endings on checkout.
+* text=auto eol=lf
+
+# Declare certain files as binary
+*.dll binary
+*.exe binary
